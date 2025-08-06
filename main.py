@@ -266,7 +266,7 @@ def get_default_messages():
             "<b>Ooopsie! Thehehe... {username} got banned?! 😢</b>\n\n"
             "I’m <i>devastated.</i> Truly.\n"
             "Like… I’m totally gonna cry about it later… maybe… not. 💅\n\n"
-            "Well, well... <u>that’s what happens when you don’t follow the rules<\u>~ 😤\n"
+            "Well, well... <u>that’s what happens when you don’t follow the rules</u>~ 😤\n"
             "Gonna miss you <b>soooo</b> much…\n"
             "Hihi~ 💋🖤 no. 😘💋"
         ),
