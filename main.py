@@ -247,6 +247,8 @@ def get_default_messages():
             "I'm gonna miss you sooo much~ 💔 <i>(not really)</i>\n"
             "But don’t come back crawling and crying afterwards.😘"
         ),
+            'image': "assets\leave.jpg"
+
         'kick': (
             "<b>Oh? {username} got the boot? 👢</b>\n\n"
             "Well, well, well... someone couldn’t behave~ 😏\n\n"
@@ -254,6 +256,8 @@ def get_default_messages():
             "<b>You earned it, b*tch.</b> 😘\n"
             "<i>Teehee~ 💋</i>"
         ),
+            'image': "assets\kick.jpg"
+
         'ban': (
             "<b>Ooopsie! Thehehe... {username} got banned?!</b> 😢\n\n"
             "I’m <i>devastated.</i> Truly.\n"
@@ -261,7 +265,8 @@ def get_default_messages():
             "<i>Well, well... <u>that’s what happens when you don’t follow the rules~</u></i> 😤\n"
             "Gonna miss you <b>sooo</b> much…\n"
             "<i>Hihi~ 💋🖤</i> <b>no.</b> 😘💋"
-        )
+        ),
+            'image': "assets\ban.jpg"
     }
 
 def handle_message(bot, update):
@@ -600,13 +605,19 @@ def handle_chat_member_update(bot, update):
                     image_sent = True
                     
             # Try default image if custom failed or doesn't exist
-            if not image_sent:
-                default_image = "assets/farewell_anime.svg"
-                if os.path.exists(default_image):
-                    result = bot.send_photo(chat_id, default_image, message_text)
-                    if result and result.get('ok'):
-                        image_sent = True
-            
+           if not image_sent:
+    default_images = {
+        "leave": "assets/leave.jpg",
+        "kick": "assets/kick.jpg",
+        "ban": "assets/ban.jpg"
+    }
+    default_image = default_images.get(message_type)
+    
+    if default_image and os.path.exists(default_image):
+        result = bot.send_photo(chat_id, default_image, message_text)
+        if result and result.get('ok'):
+            image_sent = True
+                                
             # Send text only if no image worked
             if not image_sent:
                 logger.warning("Failed to send image, sending text only")
