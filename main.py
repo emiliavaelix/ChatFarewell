@@ -241,9 +241,28 @@ class TelegramBot:
 def get_default_messages():
     """Get default farewell messages"""
     return {
-        'leave': "Awww… {username} you're leaving? — well, it was cute while it lasted. Byeee~ 💋\n\nI'm gonna miss you sooo much~ 💔 (not really)\n\nBut if you got kicked?\nThen yeah...bye, bye... you earned it, b*tch. 😘",
-        'kick': "Oh? {username} got the boot? 👢 Well, well, well... someone couldn't behave~ 😏\n\nBye, bye... you earned it, b*tch. 😘",
-        'ban': "Ooop! {username} just got banned! 🚫 Well, well... that's what happens when you don't follow the rules~ 😤\n\nSayonara forever! 👋"
+        'leave': (
+            "<b>Awww… {username}, you're leaving?</b>\n\n"
+            "<i>Well, it was cute while it lasted.</i> Byeee~ 💋\n\n"
+            "<u>I'm gonna miss you sooo much~ 💔</u> <i>(not really)</i>\n"
+            "But don’t come back crawling and crying afterwards.\n"
+            "<b>I know you will.</b> 😘"
+        ),
+        'kick': (
+            "<b>Oh? {username} got the boot? 👢</b>\n"
+            "<i>Well, well, well... someone couldn’t behave~</i> 😏\n\n"
+            "<u>Bye bye~</u>\n"
+            "You earned it, b*tch. 😘\n"
+            "<i>Teehee~ 💋</i>"
+        ),
+        'ban': (
+            "<b>Ooopsie! Thehehe... {username} got banned?!</b> 😢\n"
+            "<i>I’m devastated. Truly.</i>\n"
+            "<u>Like… I’m totally gonna cry about it later… maybe… not.</u> 💅\n\n"
+            "<i>Well, well... that’s what happens when you don’t follow the rules~</i> 😤\n"
+            "<b>Gonna miss you sooo much…</b>\n"
+            "<s>Hihi~ 💋🖤</s> <b>no.</b> 😘💋"
+        )
     }
 
 def handle_message(bot, update):
