@@ -253,11 +253,11 @@ def get_default_messages():
     'kick': {
         'text': (
             "<b>Oh? {username} got the boot? 👢</b>\n\n"
-            "Well, well, well... someone couldn’t behave and might now be crying on the floor like a little sissy~ 😏\n"
+            "<i>Well, well, well...</i> someone couldn’t behave and might now be crying on the floor like a little sissy~ 😏\n\n"
             "Guess it’s time to sit… and stay… outside. 🐾\n\n"
-            "<i>Bye bye~</i>\n\n"
+            "<i>Bye bye~</i>😈🖤\n\n"
             "<b>You earned it, b*tch.</b> 😘\n\n"
-            "<i>Teehee~ 💋</i>"
+            "<i><b>Teehee~ 💋</b></i>"
         ),
         'image': "assets/kick.jpg"
     },
