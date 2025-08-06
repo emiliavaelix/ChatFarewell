@@ -591,7 +591,7 @@ def handle_chat_member_update(bot, update):
             if custom_message:
                 message_text = custom_message.format(username=username)
             else:
-                message_text = get_default_messages()[message_type].format(username=username)
+                message_text = get_default_messages()[message_type]['text'].format(username=username)
             
             logger.info(f"User {username} ({message_type}) from chat {chat_id}")
             
@@ -606,12 +606,7 @@ def handle_chat_member_update(bot, update):
                     
             # Try default image if custom failed or doesn't exist
            if not image_sent:
-    default_images = {
-        "leave": "assets/leave.jpg",
-        "kick": "assets/kick.jpg",
-        "ban": "assets/ban.jpg"
-    }
-    default_image = default_images.get(message_type)
+    default_image = get_default_messages()[message_type]['image']
     
     if default_image and os.path.exists(default_image):
         result = bot.send_photo(chat_id, default_image, message_text)
