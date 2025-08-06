@@ -247,7 +247,7 @@ def get_default_messages():
             "I'm gonna miss you sooo much~ 💔 <i>(not really)</i>\n"
             "But don’t come back crawling and crying afterwards.😘"
         ),
-            'image': "assets\leave.jpg"
+            'image': "assets/leave.jpg"
 
         'kick': (
             "<b>Oh? {username} got the boot? 👢</b>\n\n"
@@ -256,7 +256,7 @@ def get_default_messages():
             "<b>You earned it, b*tch.</b> 😘\n"
             "<i>Teehee~ 💋</i>"
         ),
-            'image': "assets\kick.jpg"
+            'image': "assets/kick.jpg"
 
         'ban': (
             "<b>Ooopsie! Thehehe... {username} got banned?!</b> 😢\n\n"
@@ -266,7 +266,7 @@ def get_default_messages():
             "Gonna miss you <b>sooo</b> much…\n"
             "<i>Hihi~ 💋🖤</i> <b>no.</b> 😘💋"
         ),
-            'image': "assets\ban.jpg"
+            'image': "assets/ban.jpg"
     }
 
 def handle_message(bot, update):
