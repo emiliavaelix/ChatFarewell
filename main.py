@@ -609,13 +609,13 @@ def handle_chat_member_update(bot, update):
                     image_sent = True
                     
             # Try default image if custom failed or doesn't exist
-           if not image_sent:
-    default_image = get_default_messages()[message_type]['image']
-    
-    if default_image and os.path.exists(default_image):
-        result = bot.send_photo(chat_id, default_image, message_text)
-        if result and result.get('ok'):
-            image_sent = True
+    if not image_sent:
+        default_image = get_default_messages()[message_type]['image']
+
+        if default_image and os.path.exists(default_image):
+            result = bot.send_photo(chat_id, default_image, message_text)
+            if result and result.get('ok'):
+                image_sent = True
                                 
             # Send text only if no image worked
             if not image_sent:
