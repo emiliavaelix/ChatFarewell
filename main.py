@@ -246,7 +246,7 @@ def get_default_messages():
             "<b>Awww… {username}, you're leaving?</b>\n\n"
             "Well, it was <i>cute</i> while it lasted. Byeee~ 💋\n\n"
             "I'm gonna miss you sooo much~ 💔 <i>(not really)</i>\n"
-            "But don’t come back crawling and crying afterwards. 😘"
+            "But don’t come back crawling and crying afterwards. 😒😘"
         ),
         'image': "assets/leave.jpg"
     },
