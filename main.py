@@ -259,7 +259,7 @@ def get_default_messages():
             "I’m <i>devastated.</i> Truly.\n"
             "Like… I’m totally gonna cry about it later… maybe… not. 💅\n\n"
             "<i>Well, well... <u>that’s what happens when you don’t follow the rules~</u></i> 😤\n"
-            "<b>Gonna miss you sooo much…</b>\n"
+            "Gonna miss you <b>sooo</b> much…\n"
             "<i>Hihi~ 💋🖤</i> <b>no.</b> 😘💋"
         )
     }
