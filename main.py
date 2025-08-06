@@ -549,39 +549,37 @@ def handle_chat_member_update(bot, update):
     try:
         if 'chat_member' not in update:
             return
-            
+
         chat_member_update = update['chat_member']
         old_member = chat_member_update.get('old_chat_member', {})
         new_member = chat_member_update.get('new_chat_member', {})
-        
+
         # Only process if user was actually a member before
         if old_member.get('status') not in ['member', 'administrator', 'creator']:
             return
-        
+
         # Check if user left or was banned
         if new_member.get('status') in ['left', 'kicked', 'banned']:
             user = old_member.get('user', {})
             chat_id = chat_member_update.get('chat', {}).get('id')
-            
+
             if not user or not chat_id:
                 return
-                
-            # Determine message type - need to check ban status more carefully
+
+            # Determine message type
             status = new_member.get('status')
             if status == 'left':
                 message_type = 'leave'
             elif status == 'kicked':
-                # Check if it's a ban by looking at until_date
                 until_date = new_member.get('until_date', 0)
-                # If until_date is 0 or very far in future, it's a ban. Otherwise it's a kick.
-                if until_date == 0 or until_date > 2147483647:  # Permanent ban
+                if until_date == 0 or until_date > 2147483647:
                     message_type = 'ban'
                 else:
                     message_type = 'kick'
             else:
-                message_type = 'kick'  # fallback
-            
-            # Get username or fallback to full name
+                message_type = 'kick'
+
+            # Format username
             username = user.get('username')
             if username:
                 username = f"@{username}"
@@ -589,39 +587,37 @@ def handle_chat_member_update(bot, update):
                 first_name = user.get('first_name', '')
                 last_name = user.get('last_name', '')
                 username = f"{first_name} {last_name}".strip()
-            
-            # Get custom message or use default
+
+            # Get message text
             custom_message, custom_image = bot.db.get_message(chat_id, message_type)
             if custom_message:
                 message_text = custom_message.format(username=username)
             else:
                 message_text = get_default_messages()[message_type]['text'].format(username=username)
-            
+
             logger.info(f"User {username} ({message_type}) from chat {chat_id}")
-            
-            # Send message with image
+
             image_sent = False
-            
-            # Try custom image first
+
+            # Try custom image
             if custom_image and os.path.exists(custom_image):
                 result = bot.send_photo(chat_id, custom_image, message_text)
                 if result and result.get('ok'):
                     image_sent = True
-                    
-            # Try default image if custom failed or doesn't exist
-    if not image_sent:
-        default_image = get_default_messages()[message_type]['image']
 
-        if default_image and os.path.exists(default_image):
-            result = bot.send_photo(chat_id, default_image, message_text)
-            if result and result.get('ok'):
-                image_sent = True
-                                
-            # Send text only if no image worked
+            # Try default image if custom failed or doesn't exist
+            if not image_sent:
+                default_image = get_default_messages()[message_type]['image']
+                if default_image and os.path.exists(default_image):
+                    result = bot.send_photo(chat_id, default_image, message_text)
+                    if result and result.get('ok'):
+                        image_sent = True
+
+            # Send fallback text if no image worked
             if not image_sent:
                 logger.warning("Failed to send image, sending text only")
                 bot.send_message(chat_id, message_text)
-                
+
     except Exception as e:
         logger.error(f"Error in chat member handler: {e}")
 
