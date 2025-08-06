@@ -253,9 +253,10 @@ def get_default_messages():
     'kick': {
         'text': (
             "<b>Oh? {username} got the boot? 👢</b>\n\n"
-            "Well, well, well... someone couldn’t behave~ 😏\n"
-            "<u>Bye bye~</u>\n"
-            "<b>You earned it, b*tch.</b> 😘\n"
+            "Well, well, well... someone couldn’t behave and might now be crying on the floor like a little sissy~ 😏\n"
+            "Guess it’s time to sit… and stay… outside. 🐾\n\n"
+            "<i>Bye bye~</i>\n\n"
+            "<b>You earned it, b*tch.</b> 😘\n\n"
             "<i>Teehee~ 💋</i>"
         ),
         'image': "assets/kick.jpg"
@@ -263,10 +264,10 @@ def get_default_messages():
     'ban': {
         'text': (
             "<b>Ooopsie! Thehehe... {username} got banned?! 😢</b>\n\n"
-            "I’m devastated. Truly.\n"
+            "I’m <i>devastated.</i> Truly.\n"
             "Like… I’m totally gonna cry about it later… maybe… not. 💅\n\n"
-            "Well, well... that’s what happens when you don’t follow the rules~ 😤\n"
-            "Gonna miss you soooo much…\n"
+            "Well, well... <u>that’s what happens when you don’t follow the rules<\u>~ 😤\n"
+            "Gonna miss you <b>soooo</b> much…\n"
             "Hihi~ 💋🖤 no. 😘💋"
         ),
         'image': "assets/ban.jpg"
